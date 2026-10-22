@@ -23,8 +23,8 @@ API RESTful para gestionar un sistema de votaciones: registro de votantes y cand
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/<tu-usuario>/<tu-repositorio>.git
-cd <tu-repositorio>
+git clone https://github.com/EmanuelChavarria/Sistema-de-Votaciones
+cd Sistema-de-Votaciones
 ```
 
 ### 2. Crear el entorno virtual e instalar dependencias
