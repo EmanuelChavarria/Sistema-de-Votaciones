@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: votaciones-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: votaciones
+      POSTGRES_PASSWORD: votaciones
+      POSTGRES_DB: votaciones
+    ports:
+      - "5432:5432"
+    volumes:
+      - votaciones_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U votaciones -d votaciones"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    container_name: votaciones-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://votaciones:votaciones@db:5432/votaciones
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  votaciones_pgdata:
