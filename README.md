@@ -46,10 +46,10 @@ Copia la plantilla de variables de entorno:
 
 ```bash
 # Linux / macOS / Git Bash
-cp .env.example .env
+cp env.example .env
 
 # Windows (CMD o PowerShell)
-copy .env.example .env
+copy env.example .env
 ```
 
 #### 3.1 Generar la clave secreta (`SECRET_KEY`)
